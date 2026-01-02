@@ -15,7 +15,7 @@ public interface CouponRepository extends JpaRepository<Coupon, Long> {
     //락을 걸고 데이터 조회
     // PESSIMISTIC_WRITE는 다른 트랜잭션이 읽기/쓰기를 모두 못하게 막습니다.
     @Lock(LockModeType.PESSIMISTIC_WRITE)
-    @Query("select * from Coupon c where c.id = :id")
+    @Query("select c from Coupon c where c.id = :id")
     Optional<Coupon> findByIdWithLock(Long id);
 
 }

@@ -3,6 +3,7 @@ package com.example.demo;
 import com.example.demo.Entity.Coupon;
 import com.example.demo.Repository.CouponRepository;
 import com.example.demo.Service.CouponIssueService;
+import com.example.demo.Service.CouponIssueService2;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -14,8 +15,10 @@ import java.util.concurrent.Executors;
 @SpringBootTest
 
  class CouponServiceTest {
+//    @Autowired
+//    private CouponIssueService couponIssueService;
     @Autowired
-    private CouponIssueService couponIssueService;
+    private CouponIssueService2 couponIssueService;
     @Autowired
     private CouponRepository couponRepository;
 
@@ -49,6 +52,7 @@ import java.util.concurrent.Executors;
             executorService.submit(() -> {
                 try {
                     // 실제 쿠폰 발급 로직 호출
+//                    couponIssueService.issue(couponId);
                     couponIssueService.issue(couponId);
                 } catch (Exception e) {
                     // 에러가 나더라도 latch는 줄여야 하므로 catch문을 두거나 로그를 남깁니다.
